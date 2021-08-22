@@ -1,0 +1,18 @@
+.title {
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+table {
+  tr, tr:hover {
+    transition: 0.2s ease;
+  }
+  tr:hover {
+    cursor: pointer;
+    background-color: #eee;
+  }
+}
+
+.adjust-button {
+  margin-top: -10px !important;
+}

@@ -1,0 +1,94 @@
+<app-user-layout>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="title">
+          Cadastrar Desenvolvedor
+        </h3>
+        <hr/>
+      </div>
+    </div>
+    <form [formGroup]="developer" (submit)="onSubmit()">
+      <div class="row">
+        <mat-form-field class="col-sm-4" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input
+            name="nome"
+            matInput
+            placeholder="Digite seu Nome"
+            formControlName="nome"
+            required
+            maxlength="100"
+          >
+        </mat-form-field>
+
+        <mat-form-field class="col-sm-3" appearance="outline">
+          <mat-label>Data de Nascimento</mat-label>
+          <input
+            name="datanascimento"
+            matInput
+            placeholder="Digite sua data de nascimento"
+            formControlName="datanascimento"
+            [matDatepicker]="datanascimento"
+            (click)="datanascimento.open()"
+            readonly
+            required
+          >
+          <mat-datepicker-toggle
+            #dtPickerToggler
+            matSuffix
+            [for]="datanascimento"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datanascimento></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="col-sm-3" appearance="outline">
+          <mat-label>Idade</mat-label>
+          <input
+            name="idade"
+            matInput
+            placeholder="Digite sua Idade"
+            formControlName="idade"
+            required
+            [mask]="'00'"
+          >
+        </mat-form-field>
+
+        <mat-form-field class="col-sm-2" appearance="outline">
+          <mat-label>Sexo</mat-label>
+          <mat-select
+            formControlName="sexo"
+            required
+            #singleSelect
+          >
+            <mat-option [value]="'F'">Feminino</mat-option>
+            <mat-option [value]="'M'">Masculino</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-sm-12" appearance="outline">
+          <mat-label>Hobby</mat-label>
+          <input
+            name="hobby"
+            matInput
+            placeholder="Digite seu Hobby"
+            formControlName="hobby"
+            required
+            maxlength="50"
+          >
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 text-right">
+          <button class="btn btn-default" (click)="redirect()" type="button" [disabled]="!developer.valid">
+            Voltar
+          </button>
+          &nbsp;
+          <button class="btn btn-success" type="submit" [disabled]="!developer.valid">
+            Salvar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</app-user-layout>
